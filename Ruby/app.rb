@@ -7,7 +7,7 @@ set :port, 8080
 # Exibir o ola mundo.
 # Author: Gugatb
 # Date: 17/06/2018
-get '/' do
+get '/hello' do
   'Ola mundo'
 end
 
