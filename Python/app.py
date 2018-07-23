@@ -6,42 +6,33 @@ from flask import jsonify
 app = Flask(__name__)
 api = Api(app)
 
-class print_hello(Resource):
+@app.route('/hello')
+def print_hello():
     '''
     Exibir o ola mundo.
     Author: Gugatb
     Date: 15/06/2018
     '''
-    def get(self):
-        result = {'data': ['ola', 'mundo']}
-        return jsonify(result)
+    return jsonify('Ola mundo')
 
-class print_params(Resource):
+@app.route('/param')
+def print_params():
     '''
     Exibir os parametros.
     Author: Gugatb
     Date: 15/06/2018
     '''
-    def get(self):
-        parser = reqparse.RequestParser()
-        parser.add_argument('key1', type = str)
-        parser.add_argument('key2', type = str)
-        return parser.parse_args()
+    return jsonify({'key1': request.args.get('key1'), 'key2': request.args.get('key2')})
 
-class print_text(Resource):
+@app.route('/text/<text>')
+def print_text(text):
     '''
-    Exibir o texto.
+    Imprimir a informacao.
     Author: Gugatb
-    Date: 15/06/2018
-    Param: value o valor
+    Date: 23/07/2018
+    Param: information a informacao
     '''
-    def get(self, value):
-        result = {'text': value}
-        return jsonify(result)
-
-api.add_resource(print_hello, '/hello')
-api.add_resource(print_params, '/param', endpoint = 'param')
-api.add_resource(print_text, '/text/<value>')
+    return jsonify({'text': text})
 
 if __name__ == '__main__':
-	app.run(debug=True, port='5002')
+	app.run(debug=True, port='8080')

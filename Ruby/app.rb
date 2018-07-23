@@ -15,7 +15,7 @@ end
 # Author: Gugatb
 # Date: 17/06/2018
 get '/param' do
-  {'Key1' => params['key1'], 'Key2' => params['key2']}.to_json
+  {'key1' => params['key1'], 'key2' => params['key2']}.to_json
 end
 
 # Exibir o texto.
@@ -23,5 +23,5 @@ end
 # Date: 15/06/2018
 # Param: value o valor
 get '/text/:text' do
-  params[:text]
+  {'text' => params[:text]}.to_json
 end

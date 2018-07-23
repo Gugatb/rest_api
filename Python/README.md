@@ -20,6 +20,6 @@ py app.py
 
 Endpoints
 -----------------------------------------------------------------------------------------
-1. localhost:8080/
+1. localhost:8080/hello
 2. localhost:8080/param?key1=AAA&key2=BBB
 3. localhost:8080/text/AAABBB
